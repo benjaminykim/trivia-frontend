@@ -12,7 +12,8 @@ function App() {
 	});
 
 	async function startTrivia(event) {
-		await axios.get("http://localhost:8080/trivia")
+		console.log("Start Trivia Fetch");
+		await axios.get("https://dev.briefs.link/trivia")
 				.then(response => {
 					setSession(true);
 					console.log(response);
