@@ -1,15 +1,33 @@
 import './App.css';
-import { Button } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function App() {
+	const [session, setSession] = useState(false);
+
+	useEffect(() => {
+
+	});
+
+	async function startTrivia(event) {
+		await axios.get("http://localhost:8080/trivia")
+				.then(response => {
+					setSession(true);
+					console.log(response);
+		});
+	}
+
   return (
-    <div className="App">
-      <header className="App-header">
-      </header>
-			<body>
-				<Button></Button>
-			</body>
-    </div>
+		<Container className="main">
+				<Button
+					variant="outline-primary"
+					onClick={startTrivia}
+				>
+					Start Trivia!
+				</Button>
+		</Container>
   );
 }
 
