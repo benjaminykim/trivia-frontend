@@ -1,8 +1,12 @@
+.scaffold {
+	background-color:#282c34;
+	min-height: 100vh;
+}
 
 .main {
   text-align: center;
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 92vh;
   min-width: 100vw;
   display: flex;
   flex-direction: column;
@@ -58,4 +62,8 @@
 .button-submit {
 	margin-top: 20px;
 	float: left;
+}
+
+.score-table {
+	width: 50vw;
 }
