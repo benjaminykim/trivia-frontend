@@ -1,40 +1,29 @@
 import '../App.css';
-import { Container, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { Container, Button } from 'react-bootstrap';
 import axios from 'axios';
 import Trivia from './Trivia';
 
+/*
+*	Fetches trivia questions from backend, presents them in Trivia
+*/
 function Home() {
-	const [session, setSession] = useState(false);
 	const [questions, setQuestions] = useState([]);
 
-	useEffect(() => {
-
-	});
-
 	async function startTrivia() {
-		console.log("Start Trivia Fetch");
 		await axios.get("https://dev.briefs.link/trivia")
 				.then(response => {
-					console.log(response);
 					setQuestions(response.data);
-					setSession(true);
 		});
 	}
 
   return (
 		<Container className="main">
 			<div className="main-header">Tandem Trivia!</div>
-			{(session)
-			? <Trivia questions={questions}></Trivia>
-			: <Button
-					variant="outline-primary"
-					onClick={startTrivia}
-				>
-					Start Trivia!
-				</Button>
-			}
+			{(questions.length !== 0)
+				? <Trivia questions={questions}></Trivia>
+				: <Button onClick={startTrivia}>Start Trivia!</Button>}
 		</Container>
   );
 }

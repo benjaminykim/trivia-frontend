@@ -6,6 +6,9 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './components/Home';
 import LeaderBoard from './components/LeaderBoard';
 
+/*
+*	Handles application routing for Home and LeaderBoard
+*/
 export default function App() {
 	return (
 		<Router>
