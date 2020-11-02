@@ -7,12 +7,15 @@ import axios from 'axios';
 function LeaderBoard() {
 	const [scores, setScores] = useState([]);
 
-	useEffect(async () => {
-		const result = await axios('https://dev.briefs.link/score');
-		setScores(result.data);
-		console.log(result);
-		console.log(scores);
-	}, []);
+	useEffect(() => {
+		async function fetchData() {
+			const result = await axios('https://dev.briefs.link/score');
+			setScores(result.data);
+			console.log(result);
+			console.log(scores);
+		}
+		fetchData();
+	});
 
 	const tIndex = {
     fontSize: '2rem',
