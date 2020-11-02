@@ -1,12 +1,11 @@
-import './App.css';
+import '../App.css';
 import { Container, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Trivia from './components/Trivia';
-import Home from './components/Home';
+import Trivia from './Trivia';
 
-function App() {
+function Home() {
 	const [session, setSession] = useState(false);
 	const [questions, setQuestions] = useState([]);
 
@@ -40,4 +39,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
