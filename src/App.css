@@ -39,12 +39,10 @@
 }
 
 .question-answer:hover {
-	border: 1px solid blue;
 	background-color: #ababab;
 }
 
 .selected {
-	border: 1px solid blue;
 	background-color: #ababab;
 }
 
