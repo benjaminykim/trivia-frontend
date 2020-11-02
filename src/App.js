@@ -13,7 +13,7 @@ function App() {
 
 	});
 
-	async function startTrivia(event) {
+	async function startTrivia() {
 		console.log("Start Trivia Fetch");
 		await axios.get("https://dev.briefs.link/trivia")
 				.then(response => {
@@ -24,15 +24,17 @@ function App() {
 	}
 
   return (
-		(session)
+		<Container className="main">
+			<div className="main-header">Tandem Trivia!</div>
+			{(session)
 			? <Trivia questions={questions}></Trivia>
-			: <Container className="main">
-				<Button
+			: <Button
 					variant="outline-primary"
 					onClick={startTrivia}
 				>
 					Start Trivia!
 				</Button>
+			}
 		</Container>
   );
 }

@@ -1,13 +1,16 @@
 import '../App.css';
-import { Container, Button } from 'react-bootstrap';
+import { Container, Button, InputGroup, FormControl } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect, useState } from 'react';
 import { shuffle, getRandomInt, insert } from '../Helper';
+import axios from 'axios';
 
-function Question(props) {
+function Trivia(props) {
 	const [qIndex, setQIndex] = useState(0);
 	const [score, setScore] = useState(0);
 	const [finish, setFinish] = useState(false);
+	const [scoreSubmitted, setScoreSubmitted] = useState(false);
+	const [name, setName] = useState('');
 
 	const [text, setText] = useState('');
 	const [correctIndex, setIndex] = useState(-1);
@@ -42,10 +45,59 @@ function Question(props) {
 		}
 	}
 
+	function handleChange(event) {
+		setName(event.target.value);
+	}
+
+	function handleKeyPress(event) {
+		if (event.charCode===13) {
+			submitScore();
+		}
+	}
+
+	async function submitScore() {
+		console.log("Start Trivia Fetch");
+		const payload = {'user': name, 'score': score};
+		console.log(payload);
+		await axios.post("https://dev.briefs.link/score", payload)
+			.then(response => {
+				setScoreSubmitted(true);
+				console.log(response);
+				console.log("successful score post");
+		});
+	}
+
 	if (finish) {
 		return (
 			<Container className="question">
 				<div className="result">Your score is {score}/10!</div>
+				{
+					(scoreSubmitted)
+						? <div className="result">Thanks for submitting your score, {name}</div>
+						:	<div className="input">
+								<InputGroup>
+									<InputGroup.Prepend>
+											<InputGroup.Text id="basic-addon3">
+												your name:
+											</InputGroup.Text>
+									</InputGroup.Prepend>
+									<FormControl
+											aria-label="url"
+											aria-describedby="basic-addon2"
+											onChange={handleChange}
+											onKeyPress={handleKeyPress}
+									/>
+									<InputGroup.Append>
+											<Button
+										variant="outline-secondary"
+										onClick={submitScore}
+											>
+												Submit
+											</Button>
+									</InputGroup.Append>
+								</InputGroup>
+							</div>
+				}
 			</Container>
 		);
 	} else {
@@ -66,12 +118,5 @@ function Question(props) {
 	}
 }
 
-function Trivia(props) {
-  return (
-		<Container className="main">
-			<Question questions={props.questions} />
-		</Container>
-  );
-}
 
 export default Trivia;
