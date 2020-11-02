@@ -3,9 +3,11 @@ import { Container, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Trivia from './components/Trivia';
 
 function App() {
 	const [session, setSession] = useState(false);
+	const [questions, setQuestions] = useState([]);
 
 	useEffect(() => {
 
@@ -15,13 +17,16 @@ function App() {
 		console.log("Start Trivia Fetch");
 		await axios.get("https://dev.briefs.link/trivia")
 				.then(response => {
-					setSession(true);
 					console.log(response);
+					setQuestions(response.data);
+					setSession(true);
 		});
 	}
 
   return (
-		<Container className="main">
+		(session)
+			? <Trivia questions={questions}></Trivia>
+			: <Container className="main">
 				<Button
 					variant="outline-primary"
 					onClick={startTrivia}

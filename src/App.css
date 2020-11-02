@@ -8,3 +8,45 @@
   align-items: center;
   justify-content: center;
 }
+
+.question {
+	margin-top: 30px;
+}
+
+.question-header {
+	padding: 2rem 1rem 2rem 1rem;
+	background-color: white;
+	text-align: left;
+	border-radius: 10px;
+	margin-bottom: 15px;
+	font-size: 1.2em;
+}
+
+.result {
+	padding: 2rem 1rem 2rem 1rem;
+	background-color: white;
+	border-radius: 10px;
+	font-size: 1.9em;
+}
+
+.question-answer {
+	padding: 1rem 1rem 1rem 1rem;
+	background-color: white;
+	text-align: left;
+	border-radius: 10px;
+	margin-bottom: 8px;
+	font-size: 1.2em;
+}
+
+.question-answer:hover {
+	opacity: 50%;
+}
+
+.selected {
+	opacity: 50%;
+}
+
+.button-submit {
+	margin-top: 20px;
+	float: left;
+}
