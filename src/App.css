@@ -39,11 +39,13 @@
 }
 
 .question-answer:hover {
-	opacity: 50%;
+	border: 1px solid blue;
+	background-color: #ababab;
 }
 
 .selected {
-	opacity: 50%;
+	border: 1px solid blue;
+	background-color: #ababab;
 }
 
 .button-submit {
