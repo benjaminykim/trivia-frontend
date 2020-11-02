@@ -1,11 +1,11 @@
 .scaffold {
-	background-color:#282c34;
+	background-color: lightblue;
 	min-height: 100vh;
 }
 
 .main {
   text-align: center;
-  background-color: #282c34;
+  background-color: lightblue;
   min-height: 92vh;
   min-width: 100vw;
   display: flex;
@@ -66,4 +66,21 @@
 
 .score-table {
 	width: 50vw;
+}
+
+@media only screen and (max-width: 600px) {
+	.scaffold, .main {
+	  background-color: lightblue;
+	}
+
+	.main-header {
+		font-size: 2rem;
+		color: white;
+		margin-bottom: 10px;
+		margin-top: 20px;
+	}
+
+	.score-table {
+		width: 80vw;
+	}
 }
