@@ -1,25 +1,25 @@
 import './App.css';
-import { Container, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Navbar, Nav } from 'react-bootstrap';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './components/Home';
-import LeaderBoard from './components/LeaderBoard.js';
+import LeaderBoard from './components/LeaderBoard';
 
-function App() {
-
+export default function App() {
 	return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/leaderboard">LeaderBoard</Link>
-            </li>
-          </ul>
-        </nav>
+		<Router>
+      <div className="scaffold">
+        <Navbar expand="lg" bg="dark" variant="dark" className="navbar" style={{zIndex:5}} sticky="top">
+          <Navbar.Brand href="/">Tandem Trivia</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/leaderboard">LeaderBoard</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
 
         <Switch>
           <Route path="/leaderboard">
@@ -33,5 +33,3 @@ function App() {
     </Router>
   );
 }
-
-export default App;
